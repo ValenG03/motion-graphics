@@ -41,7 +41,8 @@ for i in $(seq 0 $((PASADAS - 1))); do
 done
 
 echo "▶ Audio..."
-npx remotion render "$TMP/bundle" RedBullNieveLatas "$TMP/audio.wav" --codec=wav \
+# La composición "SoloSonido" tiene solo el audio: sale en segundos.
+npx remotion render "$TMP/bundle" SoloSonido "$TMP/audio.wav" --codec=wav \
   --concurrency="$CONC" --timeout=300000 --gl="$GL" "${NAV_ARG[@]}"
 
 echo "▶ Promediando pasadas y codificando MP4 (H.264 + AAC)..."
