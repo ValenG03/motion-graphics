@@ -18,7 +18,7 @@ const nuevoCanvas = (w: number, h: number) => {
 };
 
 // Columna donde cambia el damero de color al plateado, en escalera.
-const frontera = (fila: number) => (fila < 4 ? 3 : fila < 8 ? 4 : 5);
+const frontera = (fila: number) => (fila < 4 ? 4 : fila < 8 ? 5 : 6);
 
 const cacheEtiquetas = new Map<VarianteLata, HTMLCanvasElement>();
 const cacheMR = new Map<VarianteLata, HTMLCanvasElement>();
@@ -51,8 +51,8 @@ export const etiquetaLata = (v: VarianteLata): HTMLCanvasElement => {
     const cx = x0 + CARA / 2;
     // Panel claro detrás del logo para que se lea sobre los dos colores.
     const panel = ctx.createRadialGradient(cx, 560, 30, cx, 560, 420);
-    panel.addColorStop(0, "rgba(236,238,243,0.82)");
-    panel.addColorStop(0.55, "rgba(226,229,236,0.55)");
+    panel.addColorStop(0, "rgba(236,238,243,0.62)");
+    panel.addColorStop(0.55, "rgba(226,229,236,0.38)");
     panel.addColorStop(1, "rgba(226,229,236,0)");
     ctx.fillStyle = panel;
     ctx.beginPath();

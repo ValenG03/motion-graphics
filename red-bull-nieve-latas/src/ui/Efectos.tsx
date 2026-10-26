@@ -226,6 +226,7 @@ export const Rotulo: React.FC<{
             fontSize: tam * 0.42,
             padding: "4px 16px 2px",
             letterSpacing: "0.08em",
+            whiteSpace: "nowrap",
             clipPath: `inset(0 ${100 - sub * 100}% 0 0)`,
           }}
         >
