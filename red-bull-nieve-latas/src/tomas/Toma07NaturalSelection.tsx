@@ -215,7 +215,7 @@ export const Toma07NaturalSelection: React.FC<{ readonly sinTextos?: boolean }> 
       <NieveFrente t={ta} cantidad={14} velocidad={[-6, 3]} opacidad={0.5} semilla="t7" color="255,240,220" />
       <Vineta fuerza={0.4} />
       {sinTextos ? null : <Rotulo nombre="NATURAL SELECTION" lugar="REVELSTOKE · CANADÁ" t={t - 10} x={110} y={790} tam={118} salida={t - 52} />}
-      {sinTextos ? null : <Flash fuerza={Math.max(0.7 * (1 - tramo(t, 0, 6)), tramo(t, 57, 60) * 0.5)} />}
+      {sinTextos ? null : <Flash fuerza={Math.max(0.45 * (1 - tramo(t, 0, 4)), tramo(t, 57, 60) * 0.5)} />}
     </AbsoluteFill>
   );
 };

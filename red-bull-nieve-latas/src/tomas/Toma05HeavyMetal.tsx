@@ -201,7 +201,7 @@ export const Toma05HeavyMetal: React.FC<{ readonly sinTextos?: boolean }> = ({ s
       <RayasVelocidad fuerza={0.45 * Math.max(1 - tramo(t, 2, 10), tramo(t, 46, 54))} t={t} />
       <Vineta fuerza={0.55} />
       {sinTextos ? null : <Rotulo nombre="RED BULL HEAVY METAL" lugar="BOSTON · EE.UU." t={t - 10} x={110} y={90} tam={112} salida={t - 52} />}
-      {sinTextos ? null : <Flash fuerza={Math.max(0.7 * (1 - tramo(t, 0, 6)), tramo(t, 57, 60) * 0.5)} />}
+      {sinTextos ? null : <Flash fuerza={Math.max(0.45 * (1 - tramo(t, 0, 4)), tramo(t, 57, 60) * 0.5)} />}
     </AbsoluteFill>
   );
 };

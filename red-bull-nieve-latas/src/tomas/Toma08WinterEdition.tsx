@@ -155,7 +155,7 @@ export const Toma08WinterEdition: React.FC = () => {
           </div>
         </div>
       </AbsoluteFill>
-      <Flash fuerza={Math.max(0.6 * (1 - tramo(t, 0, 6)), roto ? 0.85 * Math.exp(-(t - 38) / 3) : 0, tramo(t, 57, 60) * 0.5)} color="#e8f6ff" />
+      <Flash fuerza={Math.max(0.45 * (1 - tramo(t, 0, 4)), roto ? 0.85 * Math.exp(-(t - 38) / 3) : 0, tramo(t, 57, 60) * 0.5)} color="#e8f6ff" />
     </AbsoluteFill>
   );
 };

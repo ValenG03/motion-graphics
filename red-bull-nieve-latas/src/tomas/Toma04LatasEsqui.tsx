@@ -200,7 +200,7 @@ export const Toma04LatasEsqui: React.FC = () => {
           SIN AZÚCAR. CON AAALAS.
         </div>
       </AbsoluteFill>
-      <Flash fuerza={Math.max(0.6 * (1 - tramo(t, 0, 6)), tramo(t, 57, 60) * 0.5)} />
+      <Flash fuerza={Math.max(0.45 * (1 - tramo(t, 0, 4)), tramo(t, 57, 60) * 0.5)} />
     </AbsoluteFill>
   );
 };

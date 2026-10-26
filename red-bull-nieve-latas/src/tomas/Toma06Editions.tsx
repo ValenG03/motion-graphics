@@ -152,7 +152,7 @@ export const Toma06Editions: React.FC = () => {
       {EDICIONES.map((e) => (
         <Flash key={e.v} fuerza={t >= e.golpe ? 0.45 * Math.exp(-(t - e.golpe) / 2.5) : 0} color={e.c1} />
       ))}
-      <Flash fuerza={Math.max(0.6 * (1 - tramo(t, 0, 6)), tramo(t, 57, 60) * 0.5)} />
+      <Flash fuerza={Math.max(0.45 * (1 - tramo(t, 0, 4)), tramo(t, 57, 60) * 0.5)} />
     </AbsoluteFill>
   );
 };

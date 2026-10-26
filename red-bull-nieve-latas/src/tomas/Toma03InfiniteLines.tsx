@@ -169,7 +169,7 @@ export const Toma03InfiniteLines: React.FC<{ readonly sinTextos?: boolean }> = (
       <RayasVelocidad fuerza={0.5 * Math.max(1 - tramo(t, 2, 10), tramo(t, 48, 54))} t={t} />
       <Vineta fuerza={0.35} />
       {sinTextos ? null : <Rotulo nombre="RED BULL INFINITE LINES" lugar="AVORIAZ · FRANCIA" t={t - 12} x={110} y={90} tam={112} salida={t - 50} />}
-      {sinTextos ? null : <Flash fuerza={Math.max(0.8 * (1 - tramo(t, 0, 6)), tAterriza < 60 ? 0.35 * (1 - tramo(t, tAterriza, tAterriza + 5)) * (t >= tAterriza ? 1 : 0) : 0, tramo(t, 57, 60) * 0.5)} />}
+      {sinTextos ? null : <Flash fuerza={Math.max(0.45 * (1 - tramo(t, 0, 4)), tAterriza < 60 ? 0.35 * (1 - tramo(t, tAterriza, tAterriza + 5)) * (t >= tAterriza ? 1 : 0) : 0, tramo(t, 57, 60) * 0.5)} />}
     </AbsoluteFill>
   );
 };
