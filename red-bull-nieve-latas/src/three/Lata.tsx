@@ -230,6 +230,7 @@ export const Lata: React.FC<PropsLata> = ({
       {escarcha > 0.001 || hielo > 0.001 ? (
         <mesh geometry={geoEscarcha}>
           <meshPhysicalMaterial
+            color="#bfe3ff"
             map={texturas.escarcha}
             alphaMap={texturas.crecimiento}
             transparent
@@ -240,9 +241,9 @@ export const Lata: React.FC<PropsLata> = ({
             metalness={0}
             clearcoat={1}
             clearcoatRoughness={0.1}
-            emissive="#bfe6ff"
+            emissive="#8fdcff"
             emissiveMap={texturas.grietas}
-            emissiveIntensity={grietas * 3.5}
+            emissiveIntensity={grietas * 9}
             envMapIntensity={1.6}
             depthWrite={false}
           />

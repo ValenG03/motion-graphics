@@ -126,7 +126,8 @@ const planoEn = (t: number, r: V3): PlanoCamara => {
   };
 };
 
-export const Toma05HeavyMetal: React.FC = () => {
+// "sinTextos": para reutilizar la toma dentro del montaje rápido (toma 9).
+export const Toma05HeavyMetal: React.FC<{ readonly sinTextos?: boolean }> = ({ sinTextos = false }) => {
   const t = useT();
   const ta = rampa(t, RAMPA);
   const r = estado(ta);
@@ -199,8 +200,8 @@ export const Toma05HeavyMetal: React.FC = () => {
       <NieveFrente t={ta} cantidad={22} velocidad={[-3, 7]} opacidad={0.5} tam={1.2} semilla="t5" color="255,236,210" />
       <RayasVelocidad fuerza={0.45 * Math.max(1 - tramo(t, 2, 10), tramo(t, 46, 54))} t={t} />
       <Vineta fuerza={0.55} />
-      <Rotulo nombre="RED BULL HEAVY METAL" lugar="BOSTON · EE.UU." t={t - 10} x={110} y={90} tam={112} salida={t - 52} />
-      <Flash fuerza={Math.max(0.7 * (1 - tramo(t, 0, 6)), tramo(t, 57, 60) * 0.5)} />
+      {sinTextos ? null : <Rotulo nombre="RED BULL HEAVY METAL" lugar="BOSTON · EE.UU." t={t - 10} x={110} y={90} tam={112} salida={t - 52} />}
+      {sinTextos ? null : <Flash fuerza={Math.max(0.7 * (1 - tramo(t, 0, 6)), tramo(t, 57, 60) * 0.5)} />}
     </AbsoluteFill>
   );
 };

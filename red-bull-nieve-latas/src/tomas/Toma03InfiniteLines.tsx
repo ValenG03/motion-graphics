@@ -123,7 +123,8 @@ const planoEn = (t: number, r: V3): PlanoCamara => {
   };
 };
 
-export const Toma03InfiniteLines: React.FC = () => {
+// "sinTextos": para reutilizar la toma dentro del montaje rápido (toma 9).
+export const Toma03InfiniteLines: React.FC<{ readonly sinTextos?: boolean }> = ({ sinTextos = false }) => {
   const t = useT();
   const ta = rampa(t, RAMPA) / 30;
   const r = estado(ta);
@@ -167,8 +168,8 @@ export const Toma03InfiniteLines: React.FC = () => {
       <NieveFrente t={ta * 30} cantidad={16} velocidad={[-7, 4]} opacidad={0.55} semilla="t3" />
       <RayasVelocidad fuerza={0.5 * Math.max(1 - tramo(t, 2, 10), tramo(t, 48, 54))} t={t} />
       <Vineta fuerza={0.35} />
-      <Rotulo nombre="RED BULL INFINITE LINES" lugar="AVORIAZ · FRANCIA" t={t - 12} x={110} y={90} tam={112} salida={t - 50} />
-      <Flash fuerza={Math.max(0.8 * (1 - tramo(t, 0, 6)), tAterriza < 60 ? 0.35 * (1 - tramo(t, tAterriza, tAterriza + 5)) * (t >= tAterriza ? 1 : 0) : 0, tramo(t, 57, 60) * 0.5)} />
+      {sinTextos ? null : <Rotulo nombre="RED BULL INFINITE LINES" lugar="AVORIAZ · FRANCIA" t={t - 12} x={110} y={90} tam={112} salida={t - 50} />}
+      {sinTextos ? null : <Flash fuerza={Math.max(0.8 * (1 - tramo(t, 0, 6)), tAterriza < 60 ? 0.35 * (1 - tramo(t, tAterriza, tAterriza + 5)) * (t >= tAterriza ? 1 : 0) : 0, tramo(t, 57, 60) * 0.5)} />}
     </AbsoluteFill>
   );
 };

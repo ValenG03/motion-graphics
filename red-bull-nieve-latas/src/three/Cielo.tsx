@@ -10,7 +10,9 @@ export const Cielo: React.FC<{
   readonly solDir?: [number, number, number];
   readonly solColor?: string;
   readonly halo?: number;
-}> = ({ arriba, horizonte, abajo = horizonte, solDir = [0, 0.2, -1], solColor = "#ffe9a8", halo = 1 }) => {
+  // Qué tan rápido pasa del horizonte al azul de arriba (menor = más azul cerca del horizonte).
+  readonly curva?: number;
+}> = ({ arriba, horizonte, abajo = horizonte, solDir = [0, 0.2, -1], solColor = "#ffe9a8", halo = 1, curva = 0.55 }) => {
   const material = useMemo(
     () =>
       new THREE.ShaderMaterial({
@@ -24,6 +26,7 @@ export const Cielo: React.FC<{
           uSolDir: { value: new THREE.Vector3() },
           uSolColor: { value: new THREE.Color() },
           uHalo: { value: 1 },
+          uCurva: { value: 0.55 },
         },
         vertexShader: /* glsl */ `
           varying vec3 vDir;
@@ -41,12 +44,13 @@ export const Cielo: React.FC<{
           uniform vec3 uSolDir;
           uniform vec3 uSolColor;
           uniform float uHalo;
+          uniform float uCurva;
           varying vec3 vDir;
           void main() {
             vec3 d = normalize(vDir);
             float h = d.y;
             vec3 c = h > 0.0
-              ? mix(uHorizonte, uArriba, pow(clamp(h, 0.0, 1.0), 0.55))
+              ? mix(uHorizonte, uArriba, pow(clamp(h, 0.0, 1.0), uCurva))
               : mix(uHorizonte, uAbajo, pow(clamp(-h, 0.0, 1.0), 0.35));
             float s = max(dot(d, normalize(uSolDir)), 0.0);
             c += uSolColor * (pow(s, 6.0) * 0.28 + pow(s, 48.0) * 0.55) * uHalo;
@@ -64,6 +68,7 @@ export const Cielo: React.FC<{
   material.uniforms.uSolDir.value.set(...solDir);
   material.uniforms.uSolColor.value.set(solColor);
   material.uniforms.uHalo.value = halo;
+  material.uniforms.uCurva.value = curva;
   return (
     <mesh material={material} frustumCulled={false} renderOrder={-10}>
       <sphereGeometry args={[1000, 48, 24]} />
