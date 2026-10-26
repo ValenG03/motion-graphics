@@ -32,10 +32,12 @@ for i in $(seq 0 $((PASADAS - 1))); do
     continue
   fi
   echo "▶ Pasada $((i + 1))/$PASADAS (obturador $OBT)..."
-  npx remotion render "$TMP/bundle" RedBullNieveLatas "$TMP/pasada-$i.mov" \
+  # Se escribe con nombre temporal: si el render se corta, no queda una pasada a medias.
+  npx remotion render "$TMP/bundle" RedBullNieveLatas "$TMP/pasada-$i.tmp.mov" \
     --codec=prores --prores-profile=hq --muted \
     --props="{\"obturador\":$OBT}" \
     --concurrency="$CONC" --timeout=300000 --gl="$GL" "${NAV_ARG[@]}"
+  mv "$TMP/pasada-$i.tmp.mov" "$TMP/pasada-$i.mov"
 done
 
 echo "▶ Audio..."
